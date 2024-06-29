@@ -1,0 +1,9 @@
+@mixin font-parts($part, $value){
+    @if $part == kerning or $part == variant-ligatures{
+        -webkit-font-#{$part}: $value;
+        font-#{$part}: $value;
+    }
+    @else {
+        font-#{$part}: $value;
+    }
+}

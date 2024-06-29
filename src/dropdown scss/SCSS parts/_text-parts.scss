@@ -1,0 +1,34 @@
+@mixin text-parts($part, $value){
+    @if $part == align-last or $part == decoration-style{
+        -moz-text-#{$part}: $value;
+        text-#{$part}: $value;
+    }
+    @else if $part == fill-color or $part == stroke or $part == stroke-color or $part == stroke-width{
+        -webkit-text-#{$part}: $value;
+    }
+    @else if $part == emphasis or $part == emphasis-color or $part == emphasis-position or $part == emphasis-style {
+        -webkit-text-#{$part}: $value;
+        text-#{$part}: $value; 
+    }
+    @else if $part == overflow{
+        -o-text-#{$part}: $value;
+        text-#{$part}: $value; 
+    }
+    @else if $part == size-adjust {
+       $prefixes: ms webkit;
+       @each $prefix in $prefixes{
+        -#{$prefix}-text-#{$part}: $value;
+       }
+        text-#{$part}: $value;
+    }
+    @else if $part == decoration-line or $part == decoration-color{
+        $prefixes: moz webkit;
+       @each $prefix in $prefixes{
+        -#{$prefix}-text-#{$part}: $value;
+       }
+        text-#{$part}: $value;
+    }
+    @else {
+    text-#{$part}: $value;
+    }
+}

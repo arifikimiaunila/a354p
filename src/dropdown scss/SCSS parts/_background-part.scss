@@ -1,0 +1,3 @@
+@mixin background-parts($part, $value){
+    background-#{$part}: $value;
+}
